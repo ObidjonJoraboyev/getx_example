@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/instance_manager.dart';
 import 'package:getx_example/controller/quiz.dart';
-import 'package:pinput/pinput.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -153,9 +152,10 @@ class HomeScreen extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          controller.removeSingleSymbol();
+                          activePage+=1;
+                          pageController.jumpToPage(activePage);
                         },
-                        child: const Text("vhjw"),
+                        child: const Text("Next"),
                       ),
                       const Spacer(),
                     ],

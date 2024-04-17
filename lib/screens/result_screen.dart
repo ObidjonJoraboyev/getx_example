@@ -118,7 +118,7 @@ class _ResultScreenState extends State<ResultScreen> {
                                 ),
                                 TextSpan(
                                     text:
-                                        " ${(controller.correct.length / controller.answers.length*100).round()}%",
+                                        " ${(controller.correct.length / controller.answers.length * 100).round()}%",
                                     style: AppTextStyle.interBold.copyWith(
                                         color: AppColors.c2954D,
                                         fontSize: 16.sp)),

@@ -37,7 +37,6 @@ dependencies:
   audioplayers: ^0.20.1
   flutter_screenutil: ^5.9.0
   percent_indicator: ^4.0.0
-  pinput: ^4.0.0
   
 dev_dependencies:
   flutter_test:

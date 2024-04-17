@@ -19,29 +19,24 @@ class QuizController extends GetxController {
   RxList<String> randomLetters = <String>[].obs;
   RxList<String> questions = [
     "NIMAGAP",
-    "Book Uzbek tilida nima degani?",
-    "Phone Uzbek tilida nima degani?",
-    "Water Uzbek tilida nima degani?",
-    "Symbol Uzbek tilida nima degani?",
-    "Children Uzbek tilida nima degani?",
+    "A javob togri",
+    "B javob togri",
   ].obs;
 
   RxList<String> answers = [
-    "TASHKENT",
-    "KITOB",
-    "TELEFON",
-    "SUV",
-    "BELGI",
+    "TINCH",
+    "A",
     "B",
   ].obs;
 
   addAnswer(String string, int activePage, int indexPage, int index,
       PageController pageController) {
-
-
-
     if (answer.value.length < answers[indexPage].length) {
-    } else if (answer.value.toLowerCase() != answers[indexPage].toLowerCase()) {
+      answer.value += string;
+    }
+
+    if (answer.value.toLowerCase() != answers[indexPage].toLowerCase() &&
+        answer.value.length == answers[indexPage].length) {
       Get.showSnackbar(
         const GetSnackBar(
           backgroundColor: Colors.red,
@@ -55,13 +50,12 @@ class QuizController extends GetxController {
       );
       deleteAnswer();
     }
-
-    answer.value += string;
   }
 
-  checkAnswer(int indexPage,int activePage,PageController pageController){
-    if (activePage + 1 == answers.length &&
+  checkAnswer(int indexPage, int activePage, PageController pageController) {
+    if (activePage+1  == answers.length &&
         answer.value.toLowerCase() == answers[indexPage].toLowerCase()) {
+      check.value = false;
       Get.off(() => const ResultScreen());
     }
     if (answer.value.toLowerCase() == answers[indexPage].toLowerCase()) {
@@ -85,31 +79,26 @@ class QuizController extends GetxController {
           duration: const Duration(milliseconds: 700), curve: Curves.linear);
     }
   }
+
   deleteAnswer() {
     answer.value = "";
   }
 
-  RxBool check=true.obs;
+  RxBool check = true.obs;
   timerStart({required int minute}) async {
     correct.value = [];
     seconds.value = minute * 60;
 
     for (int i = 0; check.value; i++) {
-      await Future.delayed(Duration(seconds: 1), () {
-        print("salom");
-        if (seconds.value > 0) {
+      await Future.delayed(const Duration(seconds: 1), () {
+        if (seconds.value > 0 && check.value) {
           seconds = seconds - 1;
         } else {
           check.value = false;
-          print("njcnsdcnk");
           Get.off(() => const ResultScreen());
         }
       });
     }
-
-
-
-
   }
 
   removeSingleSymbol() {

@@ -11,8 +11,7 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  final controller =
-      Get.put(QuizController()..randomLettersFunction("TASHKENT"));
+  final controller = Get.put(QuizController()..randomLettersFunction("TINCH"));
 
   @override
   Widget build(BuildContext context) {
